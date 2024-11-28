@@ -1,13 +1,13 @@
 public class Fuvar {
-    private String taxi_id;
+    private int taxi_id;
     private String indulas;
     private int idotartam;
     private double tavolsag;
     private double viteldij;
     private double borravalo;
-    private double fizetes_modja;
+    private String fizetes_modja;
 
-    public Fuvar(String taxi_id, String indulas, int idotartam, double tavolsag, double viteldij, double borravalo, double fizetes_modja) {
+    public Fuvar(int taxi_id, String indulas, int idotartam, double tavolsag, double viteldij, double borravalo, String fizetes_modja) {
         this.taxi_id = taxi_id;
         this.indulas = indulas;
         this.idotartam = idotartam;
@@ -18,16 +18,16 @@ public class Fuvar {
     }
     public Fuvar(String line){
         String[] data= line.split(";");
-        this.taxi_id = data[0];
+        this.taxi_id = Integer.parseInt(data[0]);
         this.indulas = data[1];
-        this.idotartam = Integer.parseInt(data[2]);
-        this.tavolsag = Double.parseDouble(data[3]);
-        this.viteldij = Double.parseDouble(data[4]);
-        this.borravalo = Double.parseDouble(data[5]);
-        this.fizetes_modja = Double.parseDouble(data[6]);
+        this.idotartam = Integer.parseInt(data[2].replace(",","."));
+        this.tavolsag = Double.parseDouble(data[3].replace(",","."));
+        this.viteldij = Double.parseDouble(data[4].replace(",","."));
+        this.borravalo = Double.parseDouble(data[5].replace(",","."));
+        this.fizetes_modja = data[6];
     }
 
-    public String getTaxi_id() {
+    public int getTaxi_id() {
         return taxi_id;
     }
 
@@ -51,7 +51,7 @@ public class Fuvar {
         return borravalo;
     }
 
-    public double getFizetes_modja() {
+    public String getFizetes_modja() {
         return fizetes_modja;
     }
 
